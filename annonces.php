@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+	
+  <?php include("connection.php");
+  ?>
   <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +71,7 @@
 								<a class="nav-link login-button" href="index.html">Se connecter</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
+								<a class="nav-link add-button" href="depot_annonce.html"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>
 					</div>
@@ -221,7 +223,27 @@
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+<!--<?php
+
+try {
+
+	// On se connecte à MySQL
+	$bdd = new PDO ('mysql:host=remotemysql.com;dbname=oub2gdN0kk;charset=utf8', 'oub2gdN0kk', 'UZdeO6k5tR');
+}
+
+catch (Exception $e) {
+	// En cas d'ereur, on affiche un message et on arrête tout
+	die('Erreur : '.$e-> getMessage());
+}
+
+
+if (!isset($_GET['order'])) {
+	$_GET['order'] = 'ASC';
+}
+
+?>-->
+
+<!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
