@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calssimax</title>
+  <?php include("connection.php")?>
   
   <!-- PLUGINS CSS STYLE -->
   <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -88,20 +89,21 @@
 		<div class="row">
 			<div class="col-12">
 				<!-- Section title -->
-				<?php
-
-try {
-
-	// On se connecte à MySQL
-	$bdd = new PDO ('mysql:host=remotemysql.com;dbname=oub2gdN0kk;charset=utf8', 'oub2gdN0kk', 'UZdeO6k5tR');
-}
-
-catch (Exception $e) {
-	// En cas d'ereur, on affiche un message et on arrête tout
-	die('Erreur : '.$e-> getMessage());
-}
-
-
+				
+<!-- Titre du tablau affichant la Bdd et lien sur 'prenom' et 'nom' pour ordonner-->
+<table>
+	<tr>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=nom">Nom</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=prenom">Prenom</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=departement">Departement</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=tel">Numéro de téléphone</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=type_annonce">Type de l'annonce</th>
+			<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=date">Date</th>
+		<th>Adresse Email</th>
+		<th colspan="2">Actions</th>
+	</tr>
+	
+<?php 
 if (!isset($_GET['order'])) {
 	$_GET['order'] = 'ASC';
 }
@@ -145,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 
-	// On cré une entrée :
+	// On crée une entrée :
 	else {
 		$requeteInsert = "INSERT INTO annonces(prenom, nom, mail, departement, tel, type_annonce) VALUES ('$prenom', '$nom', '$mail', '$departement', '$tel', '$type_annonce')";
 		$reponseInsert = $bdd->query($requeteInsert);
@@ -174,21 +176,7 @@ $reponse = $bdd-> query($requete);
 	echo '<img '
 }*/
 ?>
-
-<!-- Titre du tablau affichant la Bdd et lien sur 'prenom' et 'nom' pour ordonner-->
-<table>
-	<tr>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=nom">Nom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=prenom">Prenom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=departement">Departement</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=tel">Numéro de téléphone</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=type_annonce">Type de l'annonce</th>
-			<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=date">Date</th>
-		<th>Adresse Email</th>
-		<th colspan="2">Actions</th>
-	</tr>
-	
-<?php 
+<?php
 
 
 // Affichage de la Bdd sous forme de tablau :
