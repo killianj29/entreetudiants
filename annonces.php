@@ -223,25 +223,6 @@
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						<div class="col-sm-12 col-lg-4 col-md-6">
-<!--<?php
-
-try {
-
-	// On se connecte à MySQL
-	$bdd = new PDO ('mysql:host=remotemysql.com;dbname=oub2gdN0kk;charset=utf8', 'oub2gdN0kk', 'UZdeO6k5tR');
-}
-
-catch (Exception $e) {
-	// En cas d'ereur, on affiche un message et on arrête tout
-	die('Erreur : '.$e-> getMessage());
-}
-
-
-if (!isset($_GET['order'])) {
-	$_GET['order'] = 'ASC';
-}
-
-?>-->
 
 <!-- product card -->
 <div class="product-item bg-light">
