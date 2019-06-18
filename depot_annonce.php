@@ -216,7 +216,7 @@ $reponse-> closeCursor();
 		</div>
 		<br>
 		<div>
-			<label for="age">Numéro de téléphone</label><br><input type="text" name="tel" placeholder="Tel" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['tel'] : ''; ?>">
+			<label for="age">Numéro de téléphone</label><br><input type="tel" name="tel" placeholder="Tel" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['tel'] : ''; ?>">
 		</div>
 		<br>
 		<div>
@@ -224,7 +224,7 @@ $reponse-> closeCursor();
 		</div>
 		<br>
 		<div>
-			<label for="age">Date</label><br><input type="text" name="date" placeholder="Date" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['date'] : ''; ?>">
+			<label for="age">Date</label><br><input type="date" name="date" placeholder="Date" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['date'] : ''; ?>">
 		</div>
 		<br>
 		<div>
