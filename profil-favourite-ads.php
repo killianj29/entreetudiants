@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg  navigation">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="index.php">
 						<img src="images/logo.png" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,24 +52,24 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item active">
-								<a class="nav-link" href="index.html">Accueil</a>
+								<a class="nav-link" href="index.php">Accueil</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="annonces.html">Annonces</a>
+								<a class="nav-link" href="annonces.php">Annonces</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="profil.html">Profil</a>
+								<a class="nav-link" href="profil.php">Profil</a>
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.html">S'inscrire</a>
+								<a class="nav-link login-button" href="index.php">S'inscrire</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.html">Se connecter</a>
+								<a class="nav-link login-button" href="index.php">Se connecter</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link add-button" href="depot_annonce.html"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
+								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>
 					</div>
@@ -97,26 +97,26 @@
 						<!-- User Name -->
 						<h5 class="text-center">Samanta Doe</h5>
 						<p>Joined February 06, 2017</p>
-						<a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
+						<a href="user-profile.php" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li><a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My Ads</a></li>
+							<li><a href="dashboard-my-ads.php"><i class="fa fa-user"></i> My Ads</a></li>
 							<li class="active"  >
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
+								<a href="dashboard-favourite-ads.php"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
 							</li>
 							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved Ads <span>12</span></a>
+								<a href="dashboard-archived-ads.php"><i class="fa fa-file-archive-o"></i>Archeved Ads <span>12</span></a>
 							</li>
 							<li>
-								<a href="dashboard-pending-ads.html"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
+								<a href="dashboard-pending-ads.php"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
 							</li>
 							<li>
-								<a href="logout.html"><i class="fa fa-cog"></i> Logout</a>
+								<a href="logout.php"><i class="fa fa-cog"></i> Logout</a>
 							</li>
 							<li>
-								<a href="delete-account.html"><i class="fa fa-power-off"></i>Delete Account</a>
+								<a href="delete-account.php"><i class="fa fa-power-off"></i>Delete Account</a>
 							</li>
 						</ul>
 					</div>

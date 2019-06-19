@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 	
-  <?php include("connection.php");
-  ?>
+  <?php include("connection.php"); ?>
   <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +44,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg  navigation">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="index.php">
 						<img src="images/logo.png" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,24 +53,24 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item active">
-								<a class="nav-link" href="index.html">Accueil</a>
+								<a class="nav-link" href="index.php">Accueil</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="annonces.html">Annonces</a>
+								<a class="nav-link" href="annonces.php">Annonces</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="profil.html">Profil</a>
+								<a class="nav-link" href="profil.php">Profil</a>
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.html">S'inscrire</a>
+								<a class="nav-link login-button" href="index.php">S'inscrire</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.html">Se connecter</a>
+								<a class="nav-link login-button" href="index.php">Se connecter</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link add-button" href="depot_annonce.html"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
+								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>
 					</div>
@@ -125,22 +124,22 @@
 					<div class="widget category-list">
 	<h4 class="widget-header">All Category</h4>
 	<ul class="category-list">
-		<li><a href="category.html">Laptops <span>93</span></a></li>
-		<li><a href="category.html">Iphone <span>233</span></a></li>
-		<li><a href="category.html">Microsoft  <span>183</span></a></li>
-		<li><a href="category.html">Monitors <span>343</span></a></li>
+		<li><a href="category.php">Laptops <span>93</span></a></li>
+		<li><a href="category.php">Iphone <span>233</span></a></li>
+		<li><a href="category.php">Microsoft  <span>183</span></a></li>
+		<li><a href="category.php">Monitors <span>343</span></a></li>
 	</ul>
 </div>
 
 <div class="widget category-list">
 	<h4 class="widget-header">Nearby</h4>
 	<ul class="category-list">
-		<li><a href="category.html">New York <span>93</span></a></li>
-		<li><a href="category.html">New Jersy <span>233</span></a></li>
-		<li><a href="category.html">Florida  <span>183</span></a></li>
-		<li><a href="category.html">California <span>120</span></a></li>
-		<li><a href="category.html">Texas <span>40</span></a></li>
-		<li><a href="category.html">Alaska <span>81</span></a></li>
+		<li><a href="category.php">New York <span>93</span></a></li>
+		<li><a href="category.php">New Jersy <span>233</span></a></li>
+		<li><a href="category.php">Florida  <span>183</span></a></li>
+		<li><a href="category.php">California <span>120</span></a></li>
+		<li><a href="category.php">Texas <span>40</span></a></li>
+		<li><a href="category.php">Alaska <span>81</span></a></li>
 	</ul>
 </div>
 
