@@ -27,7 +27,7 @@ function getBdd(){
 }
 
 // Créer une entrée
-function Create ($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle){
+function Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle){
 	try {
 		$connection = getDatabaseConnexion();
 		$sql = "INSERT INTO annonces(prenom, nom, mail, departement, tel, type_annonce, libelle) VALUES ('$prenom', '$nom', '$mail', '$departement', '$tel', '$type_annonce', '$libelle')";
@@ -37,5 +37,18 @@ function Create ($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libel
 	    	echo $sql . "<br>" . $e->getMessage();
 	    }
 	}
+
+$action = $_GET["action"];
+
+if ($action == "CREATE") {
+		
+		Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle);
+
+		echo "Annonce créée <br>";
+		echo "<a href='index.php'>Retourner à la page d'accueil</a>";
+		
+	}
+
+
 
 ?>
