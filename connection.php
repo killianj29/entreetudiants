@@ -18,5 +18,24 @@ function getDatabaseConnexion(){
 	}
 }
 
+// On sélectionne la base de données
+function getBdd(){
+	$connection = getDatabaseConnexion();
+	$requete = "SELECT * FROM annonces";
+	$reponse = $connection->query($requete);
+	return $reponse;
+}
+
+// Créer une entrée
+function Create ($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle){
+	try {
+		$connection = getDatabaseConnexion();
+		$sql = "INSERT INTO annonces(prenom, nom, mail, departement, tel, type_annonce, libelle) VALUES ('$prenom', '$nom', '$mail', '$departement', '$tel', '$type_annonce', '$libelle')";
+	    	$connection->exec($sql);
+		}
+	    catch(PDOException $e) {
+	    	echo $sql . "<br>" . $e->getMessage();
+	    }
+	}
 
 ?>
