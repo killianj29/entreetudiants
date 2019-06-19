@@ -94,8 +94,8 @@
 
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
-	<h3 class="widget-header user">Déposer une annnonce</h3>
-		<form action="GET">
+<h3 class="widget-header user">Déposer une annnonce</h3>
+<form action="#" method="GET">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
@@ -207,7 +207,7 @@
 <div class="form-group">
 	<label for="description_annonce">Description de l'annonce *</label>
 	<div>
-	<textarea class="form-group" id="description_annonce" rows="10" maxlength="3500"></textarea>
+	<textarea id="description_annonce" rows="10" maxlength="3500" style="width: 100%;"></textarea>
 	</div>
 </div>
 </form>

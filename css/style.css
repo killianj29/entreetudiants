@@ -259,8 +259,8 @@ a:focus, a:hover {
 
 textarea.form-control {
   padding: 20px;
-  width: 1000px;
 }
+
 
 .form-control::-webkit-input-placeholder {
   color: #666;
@@ -2481,5 +2481,6 @@ article.single-post p {
 .top-to a:hover {
   text-decoration: none;
 }
+
 
 /*# sourceMappingURL=maps/style.css.map */
