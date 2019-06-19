@@ -210,8 +210,16 @@
 	<textarea id="description_annonce" rows="10" maxlength="3500" style="width: 100%;"></textarea>
 	</div>
 </div>
+<div class="form-group">
+	<label for="departement">Departement *</label>
+	<input type="text" class="form-control" id="departement" style="width: 30%;" maxlength="7">
+</div>
+<div>
+	<button class="btn btn-transparent" type="submit">Déposer mon annonce</button>
+</div>
 </form>
 </div>
+
 				
 
 
