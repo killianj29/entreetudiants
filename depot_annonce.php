@@ -89,87 +89,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<!-- Section title -->
 
 			
-<!-- Titre du tablau affichant la Bdd et lien pour ordonner-->
-<table>
-	<tr>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=nom">Nom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=prenom">Prénom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=departement">Departement</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=tel">Numéro de téléphone</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=type_annonce">Type de l'annonce</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=libelle">Libellé</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=date">Date</th>
-		<th>Adresse Email</th>
-		<th colspan="2">Actions</th>
-	</tr>
-
-<?php
-
-
-// Affichage de la Bdd sous forme de tablau :
-while ($annonce = $reponse->fetch()) {
-	echo '<tr style ="border : 1px solid; width : 5vw">'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['nom'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['prenom'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['departement'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['tel'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['type_annonce'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['libelle'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['date'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['mail'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw"><a href="?depot_annonce.php&numero_annonce='.$annonce['num_annonce'].'&action=update">Modifier</td>'
-		.'<td style ="border : 1px solid; width : 5vw"><a onclick="confirmerSuppression(\''.$annonce['num_annonce'].'\', \''.$annonce['nom'].'\', \''.$annonce['prenom'].'\')" href="?depot_annonce.php&numero_annonce='.$annonce['num_annonce'].'&action=delete">Supprimer</td>'
-		.'</tr>';
-}
-
-$reponse-> closeCursor();
-?>
-</table>
-
-
-<!--  Le Formulaire 
-<div>
-	<h2>Déposer une annonce</h2>
-	<form action="depot_annonce.php" method="POST">
-		<div>
-			<label for="nom">Nom</label><br><input type="text" name="nom" placeholder="Nom" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['nom'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Prenom</label><br><input type="text" name="prenom" placeholder="Prenom" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['prenom'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Departement</label><br><input type="text" name="departement" placeholder="Departement" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['departement'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Numéro de téléphone</label><br><input type="tel" name="tel" placeholder="Tel" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['tel'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Type de l'annonce</label><br><input type="text" name="type_annonce" placeholder="Type de l'annonce" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['type_annonce'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Date</label><br><input type="date" name="date" placeholder="Date" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['date'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="mail">Adresse email</label><br><input type="text" name="mail" placeholder="Adresse email" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['mail'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<input id="inputDelete" type="hidden" name="action" value="<?php echo isset($_GET['action']) ? $_GET['action'] : ''; ?>">
-			<input id="inputUserId" type="hidden" value="<?php echo isset($_GET['num_annonce']) ? $_GET['num_annonce'] : '-1'; ?>" name="num_annonce">
-			<input id="submitBtn" type="submit" value="<?php echo isset($_GET['num_annonce']) ? "Modifier" : "Enregistrer"; ?>">
-		</div>
-
-	</form>
-</div> -->
 
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
@@ -178,6 +99,7 @@ $reponse-> closeCursor();
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
+	<div>
 	<select name="category" id="category" class="select">
 		<option value="0">«Choisissez une catégorie»</option>
 		<option value="33" id="cat33">Offres d'emploi</option>                    
@@ -251,6 +173,7 @@ $reponse-> closeCursor();
 		<option value="37" style="background-color:#E6E6E6" disabled="" id="cat37">-- -- --</option>
 		<option value="38" id="cat38">Autres</option>
 	</select>
+	</div>
 </div>
 <!-- Last Name -->
 <div class="form-group">
@@ -278,68 +201,19 @@ $reponse-> closeCursor();
 </div>
 <!-- Comunity Name -->
 <div class="form-group">
-	<label for="comunity-name">Comunity Name</label>
-	<input type="text" class="form-control" id="comunity-name">
+	<label for="titre_annonce">Titre de l'annonce *</label>
+	<input type="text" class="form-control" id="titre_annonce">
 </div>
-<!-- Checkbox -->
-<div class="form-check">
-						  <label class="form-check-label" for="hide-profile">
-						    <input class="form-check-input" type="checkbox" value="" id="hide-profile">
-						    Hide Profile from Public/Comunity
-						  </label>
-						</div>
-						<!-- Zip Code -->
-						<div class="form-group">
-						    <label for="zip-code">Zip Code</label>
-						    <input type="text" class="form-control" id="zip-code">
-						</div>
-						<!-- Submit button -->
-						<button class="btn btn-transparent">Save My Changes</button>
-					</form>
-				</div>
-				<!-- Change Password -->
-				<div class="widget change-password">
-					<h3 class="widget-header user">Edit Password</h3>
-					<form action="#">
-						<!-- Current Password -->
-						<div class="form-group">
-						    <label for="current-password">Current Password</label>
-						    <input type="password" class="form-control" id="current-password">
-						</div>
-						<!-- New Password -->
-						<div class="form-group">
-						    <label for="new-password">New Password</label>
-						    <input type="password" class="form-control" id="new-password">
-						</div>
-						<!-- Confirm New Password -->
-						<div class="form-group">
-						    <label for="confirm-password">Confirm New Password</label>
-						    <input type="password" class="form-control" id="confirm-password">
-						</div>
-						<!-- Submit Button -->
-						<button class="btn btn-transparent">Change Password</button>
-					</form>
-				</div>
-				<!-- Change Email Address -->
-				<div class="widget change-email mb-0">
-					<h3 class="widget-header user">Edit Email Address</h3>
-					<form action="#">
-						<!-- Current Password -->
-						<div class="form-group">
-						    <label for="current-email">Current Email</label>
-						    <input type="email" class="form-control" id="current-email">
-						</div>
-						<!-- New email -->
-						<div class="form-group">
-						    <label for="new-email">New email</label>
-						    <input type="email" class="form-control" id="new-email">
-						</div>
-						<!-- Submit Button -->
-						<button class="btn btn-transparent">Change email</button>
-					</form>
-				</div>
+<div class="form-group">
+	<label for="description_annonce">Description de l'annonce *</label>
+	<div>
+	<textarea class="form-group" id="description_annonce" rows="10" maxlength="3500"></textarea>
+	</div>
+</div>
+</form>
+</div>
+				
 
-<div>
 
 <div>
 	<script type="text/javascript">

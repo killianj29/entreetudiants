@@ -249,6 +249,7 @@ a:focus, a:hover {
   font-size: 15px;
 }
 
+
 .form-control:focus {
   color: #666;
   box-shadow: none;
@@ -258,6 +259,7 @@ a:focus, a:hover {
 
 textarea.form-control {
   padding: 20px;
+  width: 1000px;
 }
 
 .form-control::-webkit-input-placeholder {
