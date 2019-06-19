@@ -19,10 +19,9 @@ function getDatabaseConnexion(){
 }
 
 // On sélectionne la base de données
-function getBdd(){
-	$connection = getDatabaseConnexion();
+function getAnnonces($connexion){
 	$requete = "SELECT * FROM annonces";
-	$reponse = $connection->query($requete);
+	$reponse = $connexion->query($requete);
 	return $reponse;
 }
 
