@@ -38,17 +38,22 @@ function Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libell
 	    }
 	}
 
-$action = $_GET["action"];
-
-if ($action == "CREATE") {
+if (isset($_POST['action']) && isset($_POST['numero_annonce']) && !empty($_POST['action'])) {
 		
-		Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle);
-
-		echo "Annonce créée <br>";
-		echo "<a href='index.php'>Retourner à la page d'accueil</a>";
+	Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle);
 		
-	}
+	echo "Annonce créée <br>";
+	echo "<a href='index.php'>Retourner à la page d'accueil</a>";
+		
+}
 
-
+// Récupération des Id de chaque entrée :
+if (isset($_GET['numero_annonce']) && isset($_GET['action']) && $_GET['action'] == "update") {
+	
+	$requeteNumeroAnnonce = "SELECT * FROM annonces WHERE num_annonce='". $_GET['numero_annonce'] . "'";
+	$reponseNumeroAnnonce = $bdd-> query($requeteUserId);
+	$currentAnnonce = $reponseNumeroAnnonce-> fetch();
+	$reponseNumeroAnnonce-> closeCursor();
+}
 
 ?>
