@@ -90,93 +90,22 @@
 		<div class="row">
 			<div class="col-12">
 				<!-- Section title -->
-				
-<!-- Titre du tablau affichant la Bdd et lien sur 'prenom' et 'nom' pour ordonner-->
+
+			
+<!-- Titre du tablau affichant la Bdd et lien pour ordonner-->
 <table>
 	<tr>
 		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=nom">Nom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=prenom">Prenom</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=prenom">Prénom</th>
 		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=departement">Departement</th>
 		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=tel">Numéro de téléphone</th>
 		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=type_annonce">Type de l'annonce</th>
-			<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=date">Date</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=libelle">Libellé</th>
+		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=date">Date</th>
 		<th>Adresse Email</th>
 		<th colspan="2">Actions</th>
 	</tr>
-	
-<?php 
-if (!isset($_GET['order'])) {
-	$_GET['order'] = 'ASC';
-}
 
-// On envoie des données en POST et on les sécurise :
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-	$prenom = strip_tags(trim($_POST["prenom"]));
-	$prenom = str_replace(array("\r", "\n"), array(" ", " "), $prenom);
-
-	$nom = strip_tags(trim($_POST["nom"]));
-	$nom = str_replace(array("\r", "\n"), array(" ", " "), $nom);
-
-	$mail = filter_var(trim($_POST["mail"]), FILTER_SANITIZE_EMAIL);
-
-	$departement = $_POST["departement"];
-
-	$tel = $_POST["tel"];
-	$tel = preg_replace('/[^0-9+-]/', '', $_POST['tel']);
-
-	$date = $_POST["date"];
-
-	$type_annonce = strip_tags(trim($_POST["type_annonce"]));
-
-	if (isset($_POST['action']) && isset($_POST['numero_annonce']) && !empty($_POST['action'])) {
-
-
-		// On modifie une entrée :
-		if ($_POST['action'] == "update") {
-			$requeteUpdate = "UPDATE annonces SET prenom='$prenom', nom='$nom', mail='$mail', departement='$departement', tel='$tel', type_annonce='$type_annonce' WHERE num_annonce='". $_POST['numero_annonce'] . "'";
-			$reponseUpdate = $bdd-> query($requeteUpdate);
-			$reponseUpdate-> closeCursor();
-		}
-
-
-		// On supprime une entrée :
-		else if ($_POST['action'] == "delete") {
-			$requeteDelete = "DELETE FROM annonces WHERE num_annonce='" . $_POST['num_annonce'] . "'";
-			$reponseDelete = $bdd-> query($requeteDelete);
-			$reponseDelete-> closeCursor();
-		}
-	}
-
-	// On crée une entrée :
-	else {
-		$requeteInsert = "INSERT INTO annonces(prenom, nom, mail, departement, tel, type_annonce) VALUES ('$prenom', '$nom', '$mail', '$departement', '$tel', '$type_annonce')";
-		$reponseInsert = $bdd->query($requeteInsert);
-		$reponseInsert -> closeCursor();
-	}
-}
-
-// Récupération des Id de chaque entrée :
-if (isset($_GET['numero_annonce']) && isset($_GET['action']) && $_GET['action'] == "update") {
-	
-	$requeteUserId = "SELECT * FROM annonces WHERE num_annonce='". $_GET['numero_annonce'] . "'";
-	$reponseUserId = $bdd-> query($requeteUserId);
-	$currentUser = $reponseUserId-> fetch();
-	$reponseUserId-> closeCursor();
-}
-
-// On sélectionne la base de données et on l'ordonne :
-$requete = "SELECT * FROM annonces";
-if (isset($_GET['field'])) {
-	$requete .= " ORDER BY " . $_GET['field'] . " " . $_GET['order'];
-	$_GET['order'] = $_GET['order'] == "ASC" ? "DESC" : "ASC";
-}
-$reponse = $bdd-> query($requete);
-
-/*if ($_GET['field'] == "nom" && $_GET['order'] == "ASC") {
-	echo '<img '
-}*/
-?>
 <?php
 
 
@@ -188,6 +117,7 @@ while ($annonce = $reponse->fetch()) {
 		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['departement'] . '</td>'
 		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['tel'] . '</td>'
 		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['type_annonce'] . '</td>'
+		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['libelle'] . '</td>'
 		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['date'] . '</td>'
 		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['mail'] . '</td>'
 		.'<td style ="border : 1px solid; width : 5vw"><a href="?depot_annonce.php&numero_annonce='.$annonce['num_annonce'].'&action=update">Modifier</td>'
