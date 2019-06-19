@@ -6,9 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EntreEtudiants</title>
-  
-  <?php include("connection.php")?>
+  <title>Calssimax</title>
   
   <!-- PLUGINS CSS STYLE -->
   <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -39,6 +37,7 @@
 </head>
 
 <body class="body-wrapper">
+
 
 <section>
 	<div class="container">
@@ -80,175 +79,58 @@
 		</div>
 	</div>
 </section>
+<!--==================================
+=            User Profile            =
+===================================-->
 
-<!--============================
-=            Content           =
-=============================-->
-<section class=" section">
-	<!-- Container Start -->
+<section class="user-profile section">
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				
-<!-- Titre du tablau affichant la Bdd et lien sur 'prenom' et 'nom' pour ordonner-->
-<table>
-	<tr>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=nom">Nom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=prenom">Prenom</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=departement">Departement</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=tel">Numéro de téléphone</th>
-		<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=type_annonce">Type de l'annonce</th>
-			<th><a href="?depot_annonce.php&order=<?php echo $_GET['order']; ?>&field=date">Date</th>
-		<th>Adresse Email</th>
-		<th colspan="2">Actions</th>
-	</tr>
-	
-<?php 
-if (!isset($_GET['order'])) {
-	$_GET['order'] = 'ASC';
-}
-
-// On envoie des données en POST et on les sécurise :
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-	$prenom = strip_tags(trim($_POST["prenom"]));
-	$prenom = str_replace(array("\r", "\n"), array(" ", " "), $prenom);
-
-	$nom = strip_tags(trim($_POST["nom"]));
-	$nom = str_replace(array("\r", "\n"), array(" ", " "), $nom);
-
-	$mail = filter_var(trim($_POST["mail"]), FILTER_SANITIZE_EMAIL);
-
-	$departement = $_POST["departement"];
-
-	$tel = $_POST["tel"];
-	$tel = preg_replace('/[^0-9+-]/', '', $_POST['tel']);
-
-	$date = $_POST["date"];
-
-	$type_annonce = strip_tags(trim($_POST["type_annonce"]));
-
-	if (isset($_POST['action']) && isset($_POST['numero_annonce']) && !empty($_POST['action'])) {
-
-
-		// On modifie une entrée :
-		if ($_POST['action'] == "update") {
-			$requeteUpdate = "UPDATE annonces SET prenom='$prenom', nom='$nom', mail='$mail', departement='$departement', tel='$tel', type_annonce='$type_annonce' WHERE num_annonce='". $_POST['numero_annonce'] . "'";
-			$reponseUpdate = $bdd-> query($requeteUpdate);
-			$reponseUpdate-> closeCursor();
-		}
-
-
-		// On supprime une entrée :
-		else if ($_POST['action'] == "delete") {
-			$requeteDelete = "DELETE FROM annonces WHERE num_annonce='" . $_POST['num_annonce'] . "'";
-			$reponseDelete = $bdd-> query($requeteDelete);
-			$reponseDelete-> closeCursor();
-		}
-	}
-
-	// On crée une entrée :
-	else {
-		$requeteInsert = "INSERT INTO annonces(prenom, nom, mail, departement, tel, type_annonce) VALUES ('$prenom', '$nom', '$mail', '$departement', '$tel', '$type_annonce')";
-		$reponseInsert = $bdd->query($requeteInsert);
-		$reponseInsert -> closeCursor();
-	}
-}
-
-// Récupération des Id de chaque entrée :
-if (isset($_GET['numero_annonce']) && isset($_GET['action']) && $_GET['action'] == "update") {
-	
-	$requeteUserId = "SELECT * FROM annonces WHERE num_annonce='". $_GET['numero_annonce'] . "'";
-	$reponseUserId = $bdd-> query($requeteUserId);
-	$currentUser = $reponseUserId-> fetch();
-	$reponseUserId-> closeCursor();
-}
-
-// On sélectionne la base de données et on l'ordonne :
-$requete = "SELECT * FROM annonces";
-if (isset($_GET['field'])) {
-	$requete .= " ORDER BY " . $_GET['field'] . " " . $_GET['order'];
-	$_GET['order'] = $_GET['order'] == "ASC" ? "DESC" : "ASC";
-}
-$reponse = $bdd-> query($requete);
-
-/*if ($_GET['field'] == "nom" && $_GET['order'] == "ASC") {
-	echo '<img '
-}*/
-?>
-<?php
-
-
-// Affichage de la Bdd sous forme de tablau :
-while ($annonce = $reponse->fetch()) {
-	echo '<tr style ="border : 1px solid; width : 5vw">'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['nom'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['prenom'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['departement'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['tel'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['type_annonce'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['date'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw">' . $annonce['mail'] . '</td>'
-		.'<td style ="border : 1px solid; width : 5vw"><a href="?depot_annonce.php&numero_annonce='.$annonce['num_annonce'].'&action=update">Modifier</td>'
-		.'<td style ="border : 1px solid; width : 5vw"><a onclick="confirmerSuppression(\''.$annonce['num_annonce'].'\', \''.$annonce['nom'].'\', \''.$annonce['prenom'].'\')" href="?depot_annonce.php&numero_annonce='.$annonce['num_annonce'].'&action=delete">Supprimer</td>'
-		.'</tr>';
-}
-
-$reponse-> closeCursor();
-?>
-</table>
-
-
-<!--  Le Formulaire 
-<div>
-	<h2>Déposer une annonce</h2>
-	<form action="depot_annonce.php" method="POST">
-		<div>
-			<label for="nom">Nom</label><br><input type="text" name="nom" placeholder="Nom" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['nom'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Prenom</label><br><input type="text" name="prenom" placeholder="Prenom" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['prenom'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Departement</label><br><input type="text" name="departement" placeholder="Departement" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['departement'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Numéro de téléphone</label><br><input type="tel" name="tel" placeholder="Tel" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['tel'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Type de l'annonce</label><br><input type="text" name="type_annonce" placeholder="Type de l'annonce" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['type_annonce'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="age">Date</label><br><input type="date" name="date" placeholder="Date" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['date'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<label for="mail">Adresse email</label><br><input type="text" name="mail" placeholder="Adresse email" value="<?php echo isset($_GET['action']) && $_GET['action'] == 'update' ? $currentUser['mail'] : ''; ?>">
-		</div>
-		<br>
-		<div>
-			<input id="inputDelete" type="hidden" name="action" value="<?php echo isset($_GET['action']) ? $_GET['action'] : ''; ?>">
-			<input id="inputUserId" type="hidden" value="<?php echo isset($_GET['num_annonce']) ? $_GET['num_annonce'] : '-1'; ?>" name="num_annonce">
-			<input id="submitBtn" type="submit" value="<?php echo isset($_GET['num_annonce']) ? "Modifier" : "Enregistrer"; ?>">
-		</div>
-
-	</form>
-</div> -->
-
-<!-- Edit Personal Info -->
+			<div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
+				<div class="sidebar">
+					<!-- User Widget -->
+					<div class="widget user-dashboard-profile">
+						<!-- User Image -->
+						<div class="profile-thumb">
+							<img src="images/user/user-thumb.jpg" alt="" class="rounded-circle">
+						</div>
+						<!-- User Name -->
+						<h5 class="text-center">Samanta Doe</h5>
+						<p>Joined February 06, 2017</p>
+					</div>
+					<!-- Dashboard Links -->
+					<div class="widget user-dashboard-menu">
+						<ul>
+							<li>
+								<a href="dashboard-my-ads.php"><i class="fa fa-user"></i> My Ads</a></li>
+							<li>
+								<a href="dashboard-favourite-ads.php"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
+							</li>
+							<li>
+								<a href="dashboard-archived-ads.php"><i class="fa fa-file-archive-o"></i>Archeved Ads <span>12</span></a>
+							</li>
+							<li>
+								<a href="dashboard-pending-ads.php"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
+							</li>
+							<li>
+								<a href="logout.php"><i class="fa fa-cog"></i> Logout</a>
+							</li>
+							<li>
+								<a href="delete-account.php"><i class="fa fa-power-off"></i>Delete Account</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+				<!-- Edit Personal Info -->
 				<div class="widget personal-info">
-					<h3 class="widget-header user">Déposer une annnonce</h3>
-					<form action="GET">
+					<h3 class="widget-header user">Edit Personal Information</h3>
+					<form action="#">
 						<!-- First Name -->
 						<div class="form-group">
-						    <label for="prenom">prenom</label>
-						    <input type="text" class="form-control" id="prenom">
+						    <label for="first-name">First Name</label>
+						    <input type="text" class="form-control" id="first-name">
 						</div>
 						<!-- Last Name -->
 						<div class="form-group">
@@ -322,30 +204,10 @@ $reponse-> closeCursor();
 						<button class="btn btn-transparent">Change email</button>
 					</form>
 				</div>
-
-<div>
-
-<div>
-	<script type="text/javascript">
-		function confirmerSuppression (num_annonce, nom, prenom) {
-			if (confirm("Voulez-vous vraiment supprimer cette annonce ? [ Le/la " + type_annonce + ", au nom de " + nom + " " + prenom + " déposé(e) le " + date + "]?")){
-				document.querySelector("#inputDelete").value = "delete";
-				document.querySelector("#inputUserId").value = num_annonce;
-				document.querySelector("#submitBtn").click();
-				return false;
-			}
-		}
-	</script>
-</div>
-				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Container End -->
 </section>
-
-
-
 
 <!--============================
 =            Footer            =
