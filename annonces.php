@@ -50,7 +50,7 @@
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg  navigation">
 					<a class="navbar-brand" href="index.php">
-						<a href="index.php"><h2>EntreEtudiants<h2></a>
+						<a href="index.php"><h2>EntreEtudiants &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <h2></a>
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -68,12 +68,6 @@
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">S'inscrire</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">Se connecter</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
@@ -230,7 +224,7 @@
 	<?php
 		foreach ($annonces as $annonce) {
 	?>
-						<div class="col-sm-12 col-lg-4 col-md-6">
+	<div class="col-sm-12 col-lg-4 col-md-6">
 
 	<!-- product card -->
 	<div class="product-item bg-light">
@@ -238,7 +232,7 @@
 			<div class="thumb-content">
 				<!-- <div class="price">$200</div> -->
 				<a href="">
-					<img class="card-img-top img-fluid" src="<?php echo $annonce['image']; ?>" alt="Card image cap">
+					<img class="card-img-top img-fluid" src="<?php echo $annonce['image1']; ?>" alt="Card image cap">
 				</a>
 			</div>
 			<div class="card-body">

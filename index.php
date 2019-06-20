@@ -1,3 +1,10 @@
+<?php
+	include("connection.php");
+
+	$connexion = getDatabaseConnexion();
+	$annonces = getOffresMoment($connexion);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -97,12 +104,12 @@
 						<h2>Categories</h2>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href=""><i class="fa fa-bed"></i> Location</a></li>
+								<a href="annonces.php">Location</a></li>
 							<li class="list-inline-item">
-								<a href=""><i class="fa fa-grav"></i> Achat</a>
+								<a href="annonces.php">Achat</a>
 							</li>
 							<li class="list-inline-item">
-								<a href=""><i class="fa fa-car"></i> Don</a>
+								<a href="annonces.php">Services</a>
 							</li>
 						</ul>
 					</div>
@@ -115,14 +122,14 @@
 							<!-- Store Search -->
 							<div class="col-lg-6 col-md-12">
 								<div class="block d-flex">
-									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search for store">
+									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Rechercher un produit">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-12">
 								<div class="block d-flex">
-									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search for store">
+									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Rechercher par département">
 									<!-- Search Button -->
-									<button class="btn btn-main">SEARCH</button>
+									<button class="btn btn-main">Rechercher</button>
 								</div>
 							</div>
 						</div>
@@ -136,11 +143,6 @@
 	<!-- Container End -->
 </section>
 
-<!--===================================
-=            Client Slider            =
-====================================-->
-
-
 <!--===========================================
 =            Popular deals section            =
 ============================================-->
@@ -150,126 +152,53 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2>Trending Ads</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+					<h2>Offres du moment</h2>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<!-- offer 01 -->
-			<div class="col-sm-12 col-lg-4">
-				<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="">
-				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
+<?php
+	foreach ($annonces as $annonce) {
+?>
+<div class="col-sm-12 col-lg-4">
+	<!-- product card -->
+	<div class="product-item bg-light">
+		<div class="card">
+			<div class="thumb-content">
+				<!-- <div class="price">$200</div> -->
+				<a href="">
+					<img class="card-img-top img-fluid" src="<?php echo $annonce['image1']; ?>" alt="Card image cap">
+				</a>
+			</div>
+			<div class="card-body">
+			    <h4 class="card-title"><a href=""><?php echo $annonce['titre']; ?></a></h4>
+			    <ul class="list-inline product-meta">
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-folder-open-o"></i><?php echo $annonce['categorie']; ?></a>
+			    	</li>
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-calendar"></i><?php echo $annonce['date']; ?></a>
+			    	</li>
+			    </ul>
+			    <p class="card-text"><?php echo $annonce['description']; ?></p>
+			    <div class="product-ratings">
+			    	<ul class="list-inline"> 
+			    		<li class="list-inline-item <?php echo $annonce['note'] > 0 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
+			    		<li class="list-inline-item <?php echo $annonce['note'] > 1 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
+			    		<li class="list-inline-item <?php echo $annonce['note'] > 2 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
+			    		<li class="list-inline-item <?php echo $annonce['note'] > 3 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
+			    		<li class="list-inline-item <?php echo $annonce['note'] > 4 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
+			    	</ul>
+			    </div>
+			</div>
 		</div>
 	</div>
 </div>
-
-
-
+<?php
+}
+?>	
 			</div>
-			<div class="col-sm-12 col-lg-4">
-				<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="">
-				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-			</div>
-			<div class="col-sm-12 col-lg-4">
-				<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="">
-				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-			</div>
-			
-			
 		</div>
 	</div>
 </section>
