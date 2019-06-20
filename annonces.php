@@ -238,7 +238,7 @@
 			<div class="thumb-content">
 				<!-- <div class="price">$200</div> -->
 				<a href="">
-					<img class="card-img-top img-fluid" src="<?php echo $annonce['image']; ?>" alt="Card image cap">
+					<img class="card-img-top img-fluid" src="<?php echo $annonce['image1']; ?>" alt="Card image cap">
 				</a>
 			</div>
 			<div class="card-body">

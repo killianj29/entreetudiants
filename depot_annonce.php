@@ -2,13 +2,20 @@
 	include("connection.php");
 
 	$connexion = getDatabaseConnexion();
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		if (isset($_POST['action']) && !empty($_POST['action'])) {
 
-		$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description')";
-	    $reponseInsert = $connexion->query($requeteInsert);
-		}
-	}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$categorie = $_POST["categorie"];
+	$type_annonce = $_POST["type_annonce"];
+	/*$image1 = $_POST["image1"];
+	$image2 = $_POST["image2"];
+	$image3 = $_POST["image3"];*/
+	$titre = $_POST["titre"];
+	$description = $_POST["description"];
+	$departement = $_POST["departement"];
+
+	$creationAnnonce = Create($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -105,83 +112,42 @@
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="depot_annonce.php" method="POST">
+<form action="depot_annonce.php?" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
 	<div>
 	<select name="categorie" id="categorie" class="select">
-		<option value="0">«Choisissez une catégorie»</option>
-		<option value="33" id="cat33">Offres d'emploi</option>                    
+		<option value="0">«Choisissez une catégorie»</option>                   
 		<option value="1" style="background-color:#E6E6E6" disabled="" id="cat1">-- VEHICULES --</option>
-		<option value="2" id="cat2">Voitures</option>
-		<option value="3" id="cat3">Motos</option>
-		<option value="4" id="cat4">Caravaning</option>
-		<option value="5" id="cat5">Utilitaires</option>
-		<option value="6" id="cat6">Equipement Auto</option>
-		<option value="44" id="cat44">Equipement Moto</option>
-		<option value="50" id="cat50">Equipement Caravaning</option>
-		<option value="7" id="cat7">Nautisme</option>
-		<option value="51" id="cat51">Equipement Nautisme</option>
-		<option value="8" style="background-color:#E6E6E6" disabled="" id="cat8">-- IMMOBILIER --</option>
-		<option value="9" id="cat9">Ventes immobilières</option>
-		<option value="10" id="cat10">Locations</option>
-		<option value="11" id="cat11">Colocations</option>
-		<option value="13" id="cat13">Bureaux &amp; Commerces</option>
-		<option value="66" style="background-color:#E6E6E6" disabled="" id="cat66">-- VACANCES --</option>
-		<option value="12" id="cat12">Locations &amp; Gîtes</option>
-		<option value="67" id="cat67">Chambres d'hôtes</option>
-		<option value="68" id="cat68">Campings</option>
-		<option value="69" id="cat69">Hôtels</option>
-		<option value="70" id="cat70">Hébergements insolites</option>
-		<option value="14" style="background-color:#E6E6E6" disabled="" id="cat14">-- MULTIMEDIA --</option>
-		<option value="15" id="cat15">Informatique</option>
-		<option value="43" id="cat43">Consoles &amp; Jeux vidéo</option>
-		<option value="16" id="cat16">Image &amp; Son</option>
-		<option value="17" id="cat17">Téléphonie</option>
+		<option value="Voitures" id="cat2">Voitures</option>
+		<option value="Motos" id="cat3">Motos</option>
+		<option value="Utilitaires" id="cat5">Utilitaires</option>
+		<option value="Equipement Auto" id="cat6">Equipement Auto</option>
+		<option value="Equipement Moto" id="cat44">Equipement Moto</option>
+		<option value="8" style="background-color:#E6E6E6" disabled="" id="cat8">-- MULTIMEDIA --</option>
+		<option value="Informatique" id="cat15">Informatique</option>
+		<option value="Consoles/Jeux vidéo" id="cat43">Consoles &amp; Jeux vidéo</option>
+		<option value="Image/Son" id="cat16">Image &amp; Son</option>
+		<option value="Téléphonie" id="cat17">Téléphonie</option>
 		<option value="18" style="background-color:#E6E6E6" disabled="" id="cat18">-- MAISON --</option>
-		<option value="19" id="cat19">Ameublement</option>
-		<option value="20" id="cat20">Electroménager</option>
-		<option value="45" id="cat45">Arts de la table</option>
-		<option value="39" id="cat39">Décoration</option>
-		<option value="46" id="cat46">Linge de maison</option>
-		<option value="21" id="cat21">Bricolage</option>
-		<option value="52" id="cat52">Jardinage</option>
-		<option value="22" id="cat22">Vêtements</option>
-		<option value="53" id="cat53">Chaussures</option>
-		<option value="47" id="cat47">Accessoires &amp; Bagagerie</option>
-		<option value="42" id="cat42">Montres &amp; Bijoux</option>
-		<option value="23" id="cat23">Equipement bébé</option>
-		<option value="54" id="cat54">Vêtements bébé</option>
+		<option value="Ameublement" id="cat19">Ameublement</option>
+		<option value="Electroménager" id="cat20">Electroménager</option>
+		<option value="Linge de maison" id="cat46">Linge de maison</option>
+		<option value="Bricolage" id="cat21">Bricolage</option>
+		<option value="Vêtements" id="cat22">Vêtements</option>
+		<option value="Chaussures" id="cat53">Chaussures</option>
 		<option value="24" style="background-color:#E6E6E6" disabled="" id="cat24">-- LOISIRS --</option>
-		<option value="25" id="cat25">DVD / Films</option>
-		<option value="26" id="cat26">CD / Musique</option>
-		<option value="27" id="cat27">Livres</option>
-		<option value="28" id="cat28">Animaux</option>
-		<option value="55" id="cat55">Vélos</option>
-		<option value="29" id="cat29">Sports &amp; Hobbies</option>
-		<option value="30" id="cat30">Instruments de musique</option>
-		<option value="40" id="cat40">Collection</option>
-		<option value="41" id="cat41">Jeux &amp; Jouets</option>
-		<option value="48" id="cat48">Vins &amp; Gastronomie</option>
-		<option value="56" style="background-color:#E6E6E6" disabled="" id="cat56">-- MATERIEL PROFESSIONNEL --</option>
-		<option value="57" id="cat57">Matériel Agricole</option>
-		<option value="58" id="cat58">Transport - Manutention</option>
-		<option value="59" id="cat59">BTP - Chantier Gros-oeuvre</option>
-		<option value="60" id="cat60">Outillage - Matériaux 2nd-oeuvre</option>
-		<option value="32" id="cat32">Équipements Industriels</option>
-		<option value="61" id="cat61">Restauration - Hôtellerie</option>
-		<option value="62" id="cat62">Fournitures de Bureau</option>
-		<option value="63" id="cat63">Commerces &amp; Marchés</option>
-		<option value="64" id="cat64">Matériel Médical</option>
-		<option value="31" style="background-color:#E6E6E6" disabled="" id="cat31">-- SERVICES --</option>
-		<option value="34" id="cat34">Prestations de services</option>
-		<option value="35" id="cat35">Billetterie</option>
-		<option value="49" id="cat49">Evénements</option>
-		<option value="36" id="cat36">Cours particuliers</option>
-		<option value="65" id="cat65">Covoiturage</option>
+		<option value="DVD/Films" id="cat25">DVD / Films</option>
+		<option value="CD/Musique" id="cat26">CD / Musique</option>
+		<option value="Livres" id="cat27">Livres</option>
+		<option value="Sports/Hobbies" id="cat29">Sports &amp; Hobbies</option>
+		<option value="Instruments de musique" id="cat30">Instruments de musique</option>
+		<option value="56" style="background-color:#E6E6E6" disabled="" id="cat56">-- SERVICES --</option>
+		<option value="Prestations de services" id="cat34">Prestations de services</option>
+		<option value="Cours particuliers" id="cat36">Cours particuliers</option>
 		<option value="37" style="background-color:#E6E6E6" disabled="" id="cat37">-- -- --</option>
-		<option value="38" id="cat38">Autres</option>
+		<option value="Autres" id="cat38">Autres</option>
 	</select>
 	</div>
 </div>
@@ -225,7 +191,7 @@
 	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7">
 </div>
 <div>
-	<button class="btn btn-transparent" type="submit">Déposer mon annonce</button>
+	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce" onclick="$creation">
 </div>
 </form>
 </div>
