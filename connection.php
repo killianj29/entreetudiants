@@ -25,6 +25,11 @@ function getAnnonces($connexion){
 	return $reponse;
 }
 
+function getOffresMoment($connexion){
+	$requete = "SELECT * FROM annonces ORDER BY note desc, date desc LIMIT 3";
+	$reponse = $connexion->query($requete);
+	return $reponse;
+}
 // Créer une entrée
 function Create($connexion, $categorie, $type_annonce, $image1=NULL, $image2=NULL, $image3=NULL, $titre, $description, $departement){
 	

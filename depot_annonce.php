@@ -63,14 +63,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg  navigation">
 					<a class="navbar-brand" href="index.php">
-						<img src="images/logo.png" alt="">
+						<a href="index.php"><h2>EntreEtudiants<h2></a>
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item active">
+							<li class="nav-item">
 								<a class="nav-link" href="index.php">Accueil</a>
 							</li>
 							<li class="nav-item">
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							<li class="nav-item">
 								<a class="nav-link login-button" href="index.php">Se connecter</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>
@@ -191,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7">
 </div>
 <div>
-	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce" onclick="$creation">
+	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce">
 </div>
 </form>
 </div>

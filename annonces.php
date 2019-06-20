@@ -5,7 +5,7 @@
 	$annonces = getAnnonces($connexion);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	
   <!-- SITE TITTLE -->
@@ -50,17 +50,17 @@
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg  navigation">
 					<a class="navbar-brand" href="index.php">
-						<img src="images/logo.png" alt="">
+						<a href="index.php"><h2>EntreEtudiants &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <h2></a>
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item active">
+							<li class="nav-item">
 								<a class="nav-link" href="index.php">Accueil</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="annonces.php">Annonces</a>
 							</li>
 							<li class="nav-item">
@@ -68,12 +68,6 @@
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">S'inscrire</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">Se connecter</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
@@ -230,7 +224,7 @@
 	<?php
 		foreach ($annonces as $annonce) {
 	?>
-						<div class="col-sm-12 col-lg-4 col-md-6">
+	<div class="col-sm-12 col-lg-4 col-md-6">
 
 	<!-- product card -->
 	<div class="product-item bg-light">
