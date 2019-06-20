@@ -26,10 +26,10 @@ function getAnnonces($connexion){
 }
 
 // Créer une entrée
-function Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle){
+function Create($categorie, $type_annonce, $image1, $image2, $image3, $titre, $description){
 	try {
 		$connection = getDatabaseConnexion();
-		$sql = "INSERT INTO annonces(prenom, nom, mail, departement, tel, type_annonce, libelle) VALUES ('$prenom', '$nom', '$mail', '$departement', '$tel', '$type_annonce', '$libelle')";
+		$sql = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description')";
 	    	$connection->exec($sql);
 		}
 	    catch(PDOException $e) {

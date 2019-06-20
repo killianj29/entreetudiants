@@ -95,12 +95,12 @@
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="connection.php" method="GET">
+<form action="connection.php" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
 	<div>
-	<select name="category" id="category" class="select">
+	<select name="categorie" id="categorie" class="select">
 		<option value="0">«Choisissez une catégorie»</option>
 		<option value="33" id="cat33">Offres d'emploi</option>                    
 		<option value="1" style="background-color:#E6E6E6" disabled="" id="cat1">-- VEHICULES --</option>
@@ -189,30 +189,30 @@
 <!-- File chooser -->
 <div class="form-group choose-file">
 	<label for="file1">Image n°1</label>
-	<input type="file" class="form-control-file d-inline" id="input-file">
+	<input type="file" class="form-control-file d-inline" name="image1">
 </div>
 <div class="form-group choose-file">
 	<label for="file2">Image n°2</label>
-	<input type="file" class="form-control-file d-inline" id="input-file">
+	<input type="file" class="form-control-file d-inline" name="image2">
 </div>
 <div class="form-group choose-file">
 	<label for="file3">Image n°3</label>
-	<input type="file" class="form-control-file d-inline" id="input-file">
+	<input type="file" class="form-control-file d-inline" name="image3">
 </div>
 <!-- Comunity Name -->
 <div class="form-group">
 	<label for="titre_annonce">Titre de l'annonce *</label>
-	<input type="text" class="form-control" id="titre_annonce">
+	<input type="text" class="form-control" name="titre">
 </div>
 <div class="form-group">
 	<label for="description_annonce">Description de l'annonce *</label>
 	<div>
-	<textarea id="description_annonce" rows="10" maxlength="3500" style="width: 100%;"></textarea>
+	<textarea name="description" rows="10" maxlength="3500" style="width: 100%;"></textarea>
 	</div>
 </div>
 <div class="form-group">
 	<label for="departement">Departement *</label>
-	<input type="text" class="form-control" id="departement" style="width: 30%;" maxlength="7">
+	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7">
 </div>
 <div>
 	<button class="btn btn-transparent" type="submit">Déposer mon annonce</button>
