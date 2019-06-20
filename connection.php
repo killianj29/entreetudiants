@@ -26,33 +26,24 @@ function getAnnonces($connexion){
 }
 
 // Créer une entrée
-function Create($categorie, $type_annonce, $image1, $image2, $image3, $titre, $description){
-	try {
-		$connection = getDatabaseConnexion();
-		$sql = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description')";
-	    	$connection->exec($sql);
-		}
-	    catch(PDOException $e) {
-	    	echo $sql . "<br>" . $e->getMessage();
-	    }
-	}
+/*function Create(){
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if (isset($_POST['action']) && !empty($_POST['action'])) {
 
-if (isset($_POST['action']) && isset($_POST['numero_annonce']) && !empty($_POST['action'])) {
-		
-	Create($prenom, $nom, $mail, $departement, $tel, $type_annonce, $libelle);
-		
-	echo "Annonce créée <br>";
-	echo "<a href='index.php'>Retourner à la page d'accueil</a>";
-		
-}
+		$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description')";
+	    $reponseInsert = $connexion->exec($requeteInsert);
+		}
+	}
+	    
+}*/
 
 // Récupération des Id de chaque entrée :
-if (isset($_GET['numero_annonce']) && isset($_GET['action']) && $_GET['action'] == "update") {
+if (isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] == "update") {
 	
-	$requeteNumeroAnnonce = "SELECT * FROM annonces WHERE num_annonce='". $_GET['numero_annonce'] . "'";
-	$reponseNumeroAnnonce = $bdd-> query($requeteUserId);
-	$currentAnnonce = $reponseNumeroAnnonce-> fetch();
-	$reponseNumeroAnnonce-> closeCursor();
+	$requeteAnnonceId = "SELECT * FROM annonces WHERE id='". $_GET['id'] . "'";
+	$reponseAnnonceId = $bdd-> query($requeteUserId);
+	$currentAnnonce = $reponseAnnonceId-> fetch();
+	$reponseAnnonceId-> closeCursor();
 }
 
 ?>
