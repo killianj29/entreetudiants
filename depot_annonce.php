@@ -1,3 +1,15 @@
+<?php
+	include("connection.php");
+
+	$connexion = getDatabaseConnexion();
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if (isset($_POST['action']) && !empty($_POST['action'])) {
+
+		$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description')";
+	    $reponseInsert = $connexion->query($requeteInsert);
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,8 +19,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EntreEtudiants</title>
-  
-  <?php include("connection.php")?>
   
   <!-- PLUGINS CSS STYLE -->
   <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -95,7 +105,7 @@
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="depot_annonce.php?page=bdd" method="POST">
+<form action="depot_annonce.php" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
