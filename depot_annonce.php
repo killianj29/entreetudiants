@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 
   <!-- SITE TITTLE -->
@@ -95,7 +95,7 @@
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="connection.php" method="POST">
+<form action="depot_annonce.php?page=bdd" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
