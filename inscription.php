@@ -1,10 +1,3 @@
-<?php
-	include("connection.php");
-
-	$connexion = getDatabaseConnexion();
-	$annonces = getOffresMoment($connexion);
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,27 +45,24 @@
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg  navigation">
 					<a class="navbar-brand" href="index.php">
-						<a href="index.php"><h2>EntreEtudiants<h2></a>
+						<<a href="index.php"><h2>EntreEtudiants<h2></a>
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item active">
+							<li class="nav-item">
 								<a class="nav-link" href="index.php">Accueil</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="annonces.php">Annonces</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="profil.php">Profil</a>
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-							<li class="nav-item">
-								<a class="nav-link login-button" href="inscription.php">S'inscrire</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
@@ -84,122 +74,61 @@
 	</div>
 </section>
 
-<!--===============================
-=            Hero Area            =
-================================-->
-
-<section class="hero-area bg-1 text-center overly">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Header Contetnt -->
-				<div class="content-block">
-					<h1>Location, achat et don de produits ou services entre étudiants à proximité !</h1>
-					<p>Une simple recherche <br> Produits ou services à deux pas de chez vous <br> Et en plus à un prix très abordable ou même gratuitement pour certains !</p>
-					<div class="short-popular-category-list text-center">
-						<h2>Categories</h2>
-						<ul class="list-inline">
-							<li class="list-inline-item">
-								<a href="annonces.php">Location</a></li>
-							<li class="list-inline-item">
-								<a href="annonces.php">Achat</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="annonces.php">Services</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				<!-- Advance Search -->
-				<div class="advance-search">
-					<form action="#">
-						<div class="row">
-							<!-- Store Search -->
-							<div class="col-lg-6 col-md-12">
-								<div class="block d-flex">
-									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Rechercher un produit">
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-12">
-								<div class="block d-flex">
-									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Rechercher par département">
-									<!-- Search Button -->
-									<button class="btn btn-main">Rechercher</button>
-								</div>
-							</div>
-						</div>
-					</form>
-					
-				</div>
-				
+<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+<!-- Inscription -->
+<div class="widget personal-info">
+	<h3 class="widget-header user">Inscription</h3>
+	<form action="profil.php" method="POST">
+		<!-- Nom -->
+		<div class="form-group">
+		    <label for="nom">Nom</label>
+		    <input type="text" class="form-control" id="nom">
+		</div>
+		<!-- Prenom -->
+		<div class="form-group">
+		    <label for="prenom">Prenom</label>
+		    <input type="text" class="form-control" id="prenom">
+		</div>
+		<!-- Photo de profil -->
+		<div class="form-group choose-file">
+			<label for="photo-profil">Photo de profil</label>
+			<i class="fa fa-user text-center"></i>
+		    <input type="file" class="form-control-file d-inline" id="photo-profil">
+		 </div>
+		<!-- Departement -->
+		<div class="form-group">
+		    <label for="departement">Departement</label>
+		    <input type="text" class="form-control" id="departement">
+		</div>
+		<!-- Ville -->
+		<div class="form-group">
+		    <label for="ville">Ville</label>
+		    <input type="text" class="form-control" id="ville">
+		</div>
+		<!-- Mot de passe -->
+		<div class="widget change-password">
+			<h3 class="widget-header user">Mot de passe</h3>
+			<div class="form-group">
+			    <label for="mot-de-passe">Mot de passe</label>
+			    <input type="password" class="form-control" id="mot-de-passe">
+			</div>
+			<!-- Confirmation Mot de passe -->
+			<div class="form-group">
+			    <label for="confirmez-mot-de-passe">Confirmez votre mot de passe</label>
+			    <input type="password" class="form-control" id="confirmez-mot-de-passe">
 			</div>
 		</div>
-	</div>
-	<!-- Container End -->
-</section>
-
-<!--===========================================
-=            Popular deals section            =
-============================================-->
-
-<section class="popular-deals section bg-gray">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="section-title">
-					<h2>Offres du moment</h2>
-				</div>
+		<!-- Adresse email -->
+		<div class="widget change-email mb-0">
+			<h3 class="widget-header user">Adresse email</h3>
+			<div class="form-group">
+			    <label for="adresse-email">Adresse email</label>
+			    <input type="email" class="form-control" id="new-email">
 			</div>
 		</div>
-		<div class="row">
-			<!-- offer 01 -->
-<?php
-	foreach ($annonces as $annonce) {
-?>
-<div class="col-sm-12 col-lg-4">
-	<!-- product card -->
-	<div class="product-item bg-light">
-		<div class="card">
-			<div class="thumb-content">
-				<!-- <div class="price">$200</div> -->
-				<a href="">
-					<img class="card-img-top img-fluid" src="<?php echo $annonce['image1']; ?>" alt="Card image cap">
-				</a>
-			</div>
-			<div class="card-body">
-			    <h4 class="card-title"><a href=""><?php echo $annonce['titre']; ?></a></h4>
-			    <ul class="list-inline product-meta">
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-folder-open-o"></i><?php echo $annonce['categorie']; ?></a>
-			    	</li>
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-calendar"></i><?php echo $annonce['date']; ?></a>
-			    	</li>
-			    </ul>
-			    <p class="card-text"><?php echo $annonce['description']; ?></p>
-			    <div class="product-ratings">
-			    	<ul class="list-inline"> 
-			    		<li class="list-inline-item <?php echo $annonce['note'] > 0 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
-			    		<li class="list-inline-item <?php echo $annonce['note'] > 1 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
-			    		<li class="list-inline-item <?php echo $annonce['note'] > 2 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
-			    		<li class="list-inline-item <?php echo $annonce['note'] > 3 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
-			    		<li class="list-inline-item <?php echo $annonce['note'] > 4 ? 'selected' : ''; ?>"><i class="fa fa-star"></i></li>
-			    	</ul>
-			    </div>
-			</div>
-		</div>
-	</div>
+	</form>
 </div>
-<?php
-}
-?>	
-			</div>
-		</div>
-	</div>
 </section>
-
 
 <!--============================
 =            Footer            =
@@ -271,6 +200,3 @@
 </body>
 
 </html>
-
-
-

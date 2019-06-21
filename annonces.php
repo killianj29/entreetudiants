@@ -69,6 +69,9 @@
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
+								<a class="nav-link login-button" href="inscription.php">S'inscrire</a>
+							</li>
+							<li class="nav-item">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>

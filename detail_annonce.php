@@ -52,24 +52,21 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item">
-								<a class="nav-link" href="index.html">Accueil</a>
+								<a class="nav-link" href="index.php">Accueil</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="annonces.html">Annonces</a>
+								<a class="nav-link" href="annonces.php">Annonces</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="profil.html">Profil</a>
+								<a class="nav-link" href="profil.php">Profil</a>
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.html">S'inscrire</a>
+								<a class="nav-link login-button" href="inscription.php">S'inscrire</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.html">Se connecter</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link add-button" href="depot_annonce.html"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
+								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>
 					</div>
