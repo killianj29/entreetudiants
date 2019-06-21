@@ -80,9 +80,13 @@
 	</div>
 </section>
 
-<div style=" width:100%; display: flex; align-items: center; ">
-	<h2>Votre annonce a bien été enregistrée !</h2>
-	<a class="nav-link login-button" href="index.php" style="margin: 22px 1000px 22px 22px;">Retourner à l'accueil</a>
-	<a class="nav-link login-button" href="profil.php" style="margin: 22px 1000px 22px 22px;">Voir mes annonces</a>
-	<a class="nav-link login-button" href="depot_annonce.php" style="margin: 22px 1000px 22px 22px;">Déposer une nouvelle annonce</a>
+<h2 style="text-align: center;">Votre annonce a bien été enregistrée !</h2><br>
+<div style="
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around">
+	<a class="nav-link login-button" href="index.php" style="margin: 20px 20px 20px 20px;">Retourner à l'accueil</a>
+	<a class="nav-link login-button" href="profil.php" style="margin: 20px 20px 20px 20px;">Voir mes annonces</a>
+	<a class="nav-link login-button" href="depot_annonce.php" style="margin: 20px 20px 20px 20px;">Déposer une nouvelle annonce</a>
 </div>
