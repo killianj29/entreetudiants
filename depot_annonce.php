@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="depot_annonce.php?" method="POST">
+<form action="confirmation_annonce.php" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
@@ -157,10 +157,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<label for="type_annonce">Type d'annonce *</label>
 		<div>
 			<label for="offre">Offre</label>
-			<input type="radio" id="offre" name="type_annonce" checked>
+			<input type="radio" id="offre" name="type_annonce" checked value="offre">
 		
 			<label for="demande">Demande</label>
-			<input type="radio" id="demande" name="type_annonce">
+			<input type="radio" id="demande" name="type_annonce" value="demande">
 		</div>
 </div>
 <!-- File chooser -->
