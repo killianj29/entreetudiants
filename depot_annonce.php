@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
 	<div>
-	<select name="categorie" id="categorie" class="select">
+	<select name="categorie" id="categorie" class="select" required>
 		<option value="0">«Choisissez une catégorie»</option>                   
 		<option value="1" style="background-color:#E6E6E6" disabled="" id="cat1">-- VEHICULES --</option>
 		<option value="Voitures" id="cat2">Voitures</option>
@@ -178,17 +178,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Comunity Name -->
 <div class="form-group">
 	<label for="titre_annonce">Titre de l'annonce *</label>
-	<input type="text" class="form-control" name="titre">
+	<input type="text" class="form-control" name="titre" required>
 </div>
 <div class="form-group">
 	<label for="description_annonce">Description de l'annonce *</label>
 	<div>
-	<textarea name="description" rows="10" maxlength="3500" style="width: 100%;"></textarea>
+	<textarea name="description" rows="10" maxlength="3500" style="width: 100%;" required></textarea>
 	</div>
 </div>
 <div class="form-group">
 	<label for="departement">Departement *</label>
-	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7">
+	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7" required>
 </div>
 <div>
 	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce">
