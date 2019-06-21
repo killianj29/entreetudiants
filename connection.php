@@ -31,9 +31,9 @@ function getOffresMoment($connexion){
 	return $reponse;
 }
 // Créer une entrée
-function Create($connexion, $categorie, $type_annonce, $image1=NULL, $image2=NULL, $image3=NULL, $titre, $description, $departement){
+function Create($connexion, $categorie, $type_annonce, $image1=NULL, $image2=NULL, $image3=NULL, $titre, $description, $departement, $ville){
 	
-	$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description, departement) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description', '$departement')";
+	$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description, departement,ville) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description', '$departement','$ville')";
     $reponseInsert = $connexion->query($requeteInsert);
     echo "Votre annonce a bien été enregistrée !";
 }

@@ -12,8 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$titre = $_POST["titre"];
 	$description = $_POST["description"];
 	$departement = $_POST["departement"];
+	$ville = $_POST["ville"];
 
-	$creationAnnonce = Create($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement);
+	$creationAnnonce = Create($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
 }
 
 ?>
@@ -189,6 +190,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="form-group">
 	<label for="departement">Departement *</label>
 	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7" required>
+</div>
+<div class="form-group">
+	<label for="ville">Ville *</label>
+	<input type="text" class="form-control" name="ville" style="width: 30%;" required>
 </div>
 <div>
 	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce">
