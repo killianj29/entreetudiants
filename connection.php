@@ -35,7 +35,6 @@ function Create($connexion, $categorie, $type_annonce, $image1=NULL, $image2=NUL
 	
 	$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description, departement) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description', '$departement')";
     $reponseInsert = $connexion->query($requeteInsert);
-    echo "Votre annonce a bien été enregistrée !";
 }
 
 // Récupération des Id de chaque entrée :
