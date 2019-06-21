@@ -75,58 +75,59 @@
 </section>
 
 <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-<!-- Inscription -->
-<div class="widget personal-info">
-	<h3 class="widget-header user">Inscription</h3>
-	<form action="profil.php" method="POST">
-		<!-- Nom -->
-		<div class="form-group">
-		    <label for="nom">Nom</label>
-		    <input type="text" class="form-control" id="nom">
-		</div>
-		<!-- Prenom -->
-		<div class="form-group">
-		    <label for="prenom">Prenom</label>
-		    <input type="text" class="form-control" id="prenom">
-		</div>
-		<!-- Photo de profil -->
-		<div class="form-group choose-file">
-			<label for="photo-profil">Photo de profil</label>
-			<i class="fa fa-user text-center"></i>
-		    <input type="file" class="form-control-file d-inline" id="photo-profil">
-		 </div>
-		<!-- Departement -->
-		<div class="form-group">
-		    <label for="departement">Departement</label>
-		    <input type="text" class="form-control" id="departement">
-		</div>
-		<!-- Ville -->
-		<div class="form-group">
-		    <label for="ville">Ville</label>
-		    <input type="text" class="form-control" id="ville">
-		</div>
-		<!-- Mot de passe -->
-		<div class="widget change-password">
-			<h3 class="widget-header user">Mot de passe</h3>
-			<div class="form-group">
-			    <label for="mot-de-passe">Mot de passe</label>
-			    <input type="password" class="form-control" id="mot-de-passe">
-			</div>
-			<!-- Confirmation Mot de passe -->
-			<div class="form-group">
-			    <label for="confirmez-mot-de-passe">Confirmez votre mot de passe</label>
-			    <input type="password" class="form-control" id="confirmez-mot-de-passe">
-			</div>
-		</div>
-		<!-- Adresse email -->
-		<div class="widget change-email mb-0">
-			<h3 class="widget-header user">Adresse email</h3>
-			<div class="form-group">
-			    <label for="adresse-email">Adresse email</label>
-			    <input type="email" class="form-control" id="new-email">
-			</div>
-		</div>
-	</form>
+  <!-- Inscription -->
+  <div class="widget personal-info">
+  	<h3 class="widget-header user">Inscription</h3>
+  	<form action="profil.php" method="POST">
+  		<!-- Nom -->
+  		<div class="form-group">
+  		    <label for="nom">Nom</label>
+  		    <input type="text" class="form-control" id="nom">
+  		</div>
+  		<!-- Prenom -->
+  		<div class="form-group">
+  		    <label for="prenom">Prenom</label>
+  		    <input type="text" class="form-control" id="prenom">
+  		</div>
+  		<!-- Photo de profil -->
+  		<div class="form-group choose-file">
+  			<label for="photo-profil">Photo de profil</label>
+  			<i class="fa fa-user text-center"></i>
+  		    <input type="file" class="form-control-file d-inline" id="photo-profil">
+  		 </div>
+  		<!-- Departement -->
+  		<div class="form-group">
+  		    <label for="departement">Departement</label>
+  		    <input type="text" class="form-control" id="departement">
+  		</div>
+  		<!-- Ville -->
+  		<div class="form-group">
+  		    <label for="ville">Ville</label>
+  		    <input type="text" class="form-control" id="ville">
+  		</div>
+  		<!-- Mot de passe -->
+  		<div class="widget change-password">
+  			<h3 class="widget-header user">Mot de passe</h3>
+  			<div class="form-group">
+  			    <label for="mot-de-passe">Mot de passe</label>
+  			    <input type="password" class="form-control" id="mot-de-passe">
+  			</div>
+  			<!-- Confirmation Mot de passe -->
+  			<div class="form-group">
+  			    <label for="confirmez-mot-de-passe">Confirmez votre mot de passe</label>
+  			    <input type="password" class="form-control" id="confirmez-mot-de-passe">
+  			</div>
+  		</div>
+  		<!-- Adresse email -->
+  		<div class="widget change-email mb-0">
+  			<h3 class="widget-header user">Adresse email</h3>
+  			<div class="form-group">
+  			    <label for="adresse-email">Adresse email</label>
+  			    <input type="email" class="form-control" id="new-email">
+  			</div>
+  		</div>
+  	</form>
+  </div>
 </div>
 </section>
 
