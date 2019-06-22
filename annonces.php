@@ -91,17 +91,17 @@
 					<form>
 						<div class="form-row">
 							<div class="form-group col-md-4">
-								<input type="text" class="form-control" id="inputtext4" placeholder="What are you looking for">
+								<input type="text" class="form-control" id="inputtext4" placeholder="Rechercher un produit">
 							</div>
 							<div class="form-group col-md-3">
-								<input type="text" class="form-control" id="inputCategory4" placeholder="Category">
+								<input type="text" class="form-control" id="inputCategory4" placeholder="Rechercher par catégorie">
 							</div>
 							<div class="form-group col-md-3">
-								<input type="text" class="form-control" id="inputLocation4" placeholder="Location">
+								<input type="text" class="form-control" id="inputLocation4" placeholder="Rechercher par département">
 							</div>
 							<div class="form-group col-md-2">
 								
-								<button type="submit" class="btn btn-primary">Search Now</button>
+								<button type="submit" class="btn btn-primary">Rechercher</button>
 							</div>
 						</div>
 					</form>

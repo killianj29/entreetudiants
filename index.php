@@ -114,7 +114,7 @@
 				</div>
 				<!-- Advance Search -->
 				<div class="advance-search">
-					<form action="#">
+					<form action="#" method="GET">
 						<div class="row">
 							<!-- Store Search -->
 							<div class="col-lg-6 col-md-12">

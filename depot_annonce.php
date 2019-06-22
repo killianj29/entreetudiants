@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$departement = $_POST["departement"];
 	$ville = $_POST["ville"];
 
-	$creationAnnonce = Create($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
+	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
 }
 
 ?>

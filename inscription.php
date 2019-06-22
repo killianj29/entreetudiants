@@ -1,3 +1,85 @@
+<?php
+  include("connection.php");
+
+  $connexion = getDatabaseConnexion();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST['forminscription'])) {
+      
+      $nom = $_POST["nom"];
+      $prenom = $_POST["prenom"];
+      $photo_profil = $_POST["photo_profil"];
+      $ville = $_POST["ville"];
+      $departement = $_POST["departement"];
+      $telephone = $_POST["telephone"];
+      $mail = htmlspecialchars($_POST["mail"]);
+      $mail2 = htmlspecialchars($_POST["mail2"]);
+      $mot_de_passe = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
+      $mot_de_passe2 = password_hash($_POST["mot_de_passe2"], PASSWORD_DEFAULT);
+      
+      $erreurTrouvee = false;
+      $erreurs = array();
+
+      foreach ($_POST as $key => $value) {
+        if (in_array($value,  array("nom", "prenom", "ville", "departement", "telephone", "mail", "mail2", "mot_de_passe", "mot_de_passe2"))) {
+          if (empty($_POST[$value])) {
+            $erreurs[$value] = "Un champ obligatoire est vide.";
+            $erreurTrouvee = true;
+            break;
+          }
+        }
+      }
+
+      if (!$erreurTrouvee && (strlen($nom) > 50 || strlen($prenom) > 50)) {
+        $erreurs["nom"] = "Votre nom et votre prénom ne doivent pas dépasser 50 caractères !";
+        $erreurs["prenom"] = "Votre nom et votre prénom ne doivent pas dépasser 50 caractères !";
+        $erreurTrouvee = true;
+      }
+
+      if (!$erreurTrouvee && strlen($departement) > 2) {
+        $erreurs["departement"] = "Vos departement ne correspond pas !";
+        $erreurTrouvee = true;
+      }
+
+      if (!$erreurTrouvee && strlen($telephone) > 10) {
+        $erreurs["telephone"] = "Votre numéro de télephone ne correspond pas !";
+        $erreurTrouvee = true;
+      }
+
+      if(!$erreurTrouvee && !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        $erreurs["mail1"] = "Votre adresse mail n'est pas valide !";
+        $erreurTrouvee = true;
+      }
+
+      if (!$erreurTrouvee && $mail != $mail2) {
+        $erreurs["mail2"] = "Vos adresses mail ne correspondent pas !";
+        $erreurTrouvee = true;
+      }
+
+      if (!$erreurTrouvee) {
+        $reqmail = $bdd->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+        $reqmail->execute(array($mail));
+        $mailexist = $reqmail->rowCount();
+
+        if ($mailexist == 1) {
+          $erreurs["mail3"] = "Adresse mail déjà utilisée !";
+          $erreurTrouvee = true;
+        }
+      }
+
+      if(!$erreurTrouvee && $mot_de_passe != $mot_de_passe2) {
+          $erreur["mdp"] = "Vos mots de passes ne correspondent pas !";
+          $erreurTrouvee = true;
+      }
+
+
+      if (!$erreurTrouvee) {
+        $creationProfil = CreerProfil($connexion, $nom, $prenom, $photo_profil, $ville, $departement, $telephone, $mail, $mot_de_passe);
+      }                                
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -82,52 +164,66 @@
   		<!-- Nom -->
   		<div class="form-group">
   		    <label for="nom">Nom</label>
-  		    <input type="text" class="form-control" id="nom">
+  		    <input type="text" class="form-control" name="nom" required>
   		</div>
   		<!-- Prenom -->
   		<div class="form-group">
   		    <label for="prenom">Prenom</label>
-  		    <input type="text" class="form-control" id="prenom">
+  		    <input type="text" class="form-control" name="prenom" required>
   		</div>
   		<!-- Photo de profil -->
   		<div class="form-group choose-file">
   			<label for="photo-profil">Photo de profil</label>
   			<i class="fa fa-user text-center"></i>
-  		    <input type="file" class="form-control-file d-inline" id="photo-profil">
+  		    <input type="file" class="form-control-file d-inline" name="photo_profil">
   		 </div>
   		<!-- Departement -->
   		<div class="form-group">
   		    <label for="departement">Departement</label>
-  		    <input type="text" class="form-control" id="departement">
+  		    <input type="text" class="form-control" name="departement" required>
   		</div>
   		<!-- Ville -->
   		<div class="form-group">
   		    <label for="ville">Ville</label>
-  		    <input type="text" class="form-control" id="ville">
+  		    <input type="text" class="form-control" name="ville" required>
   		</div>
   		<!-- Mot de passe -->
   		<div class="widget change-password">
   			<h3 class="widget-header user">Mot de passe</h3>
   			<div class="form-group">
   			    <label for="mot-de-passe">Mot de passe</label>
-  			    <input type="password" class="form-control" id="mot-de-passe">
+  			    <input type="password" class="form-control" name="mot_de_passe" required>
   			</div>
   			<!-- Confirmation Mot de passe -->
   			<div class="form-group">
   			    <label for="confirmez-mot-de-passe">Confirmez votre mot de passe</label>
-  			    <input type="password" class="form-control" id="confirmez-mot-de-passe">
+  			    <input type="password" class="form-control" name="mot_de_passe2" required>
   			</div>
   		</div>
   		<!-- Adresse email -->
-  		<div class="widget change-email mb-0">
+  		<div class="widget mail mb-0">
   			<h3 class="widget-header user">Adresse email</h3>
   			<div class="form-group">
-  			    <label for="adresse-email">Adresse email</label>
-  			    <input type="email" class="form-control" id="new-email">
+  			    <label for="mail">Adresse email</label>
+  			    <input type="email" class="form-control" name="mail" required>
   			</div>
+        <!-- Confirmation emial -->
+        <div class="form-group">
+            <label for="confirmez-email">Confirmez votre adresse email</label>
+            <input type="email" class="form-control" name="mail2" required>
+        </div>
   		</div>
+      <!-- Téléphone -->
+      <div class="widget mb-0">
+        <h3 class="widget-header user">Numéro de télephone</h3>
+        <div class="form-group">
+            <label for="telephone">Numéro de télephone</label>
+            <input type="tel" class="form-control" name="telephone" required maxlength="10">
+        </div>
+      </div>
+      <!-- Bouton -->
       <div>
-        <input class="btn btn-transparent" type="submit" value="S'inscrire">
+        <input class="btn btn-transparent" type="submit" value="S'inscrire" name="forminscription">
       </div>
   	</form>
   </div>
@@ -202,5 +298,4 @@
   <script src="js/scripts.js"></script>
 
 </body>
-
 </html>
