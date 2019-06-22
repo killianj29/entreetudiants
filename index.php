@@ -3,6 +3,7 @@
 
 	$connexion = getDatabaseConnexion();
 	$annonces = getOffresMoment($connexion);
+
 ?>
 
 <!DOCTYPE html>
@@ -119,14 +120,14 @@
 							<!-- Store Search -->
 							<div class="col-lg-6 col-md-12">
 								<div class="block d-flex">
-									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Rechercher un produit">
+									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" name="titre" placeholder="Rechercher un produit">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-12">
 								<div class="block d-flex">
-									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Rechercher par département">
+									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" name="departement" placeholder="Rechercher par département">
 									<!-- Search Button -->
-									<button class="btn btn-main">Rechercher</button>
+									<input type="submit" class="btn btn-main" value="Rechercher">
 								</div>
 							</div>
 						</div>

@@ -4,7 +4,6 @@
   $connexion = getDatabaseConnexion();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['forminscription'])) {
       
       $nom = $_POST["nom"];
       $prenom = $_POST["prenom"];
@@ -17,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $mot_de_passe = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
       $mot_de_passe2 = password_hash($_POST["mot_de_passe2"], PASSWORD_DEFAULT);
       
-      $erreurTrouvee = false;
+      $erreurTrouvee = true;
       $erreurs = array();
 
       foreach ($_POST as $key => $value) {
@@ -57,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 
       if (!$erreurTrouvee) {
-        $reqmail = $bdd->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+        $reqmail = $connexion->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
         $reqmail->execute(array($mail));
         $mailexist = $reqmail->rowCount();
 
@@ -72,11 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $erreurTrouvee = true;
       }
 
-
-      if (!$erreurTrouvee) {
-        $creationProfil = CreerProfil($connexion, $nom, $prenom, $photo_profil, $ville, $departement, $telephone, $mail, $mot_de_passe);
-      }                                
-  }
+      $creationProfil = CreerProfil($connexion, $nom, $prenom, $photo_profil, $ville, $departement, $telephone, $mail, $mot_de_passe);
 }
 
 ?>
@@ -160,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!-- Inscription -->
   <div class="widget personal-info">
   	<h3 class="widget-header user">Inscription</h3>
-  	<form action="profil.php" method="POST">
+  	<form action="inscription.php?" method="POST">
   		<!-- Nom -->
   		<div class="form-group">
   		    <label for="nom">Nom</label>
@@ -180,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   		<!-- Departement -->
   		<div class="form-group">
   		    <label for="departement">Departement</label>
-  		    <input type="text" class="form-control" name="departement" required>
+  		    <input type="text" class="form-control" name="departement" required maxlength="2" placeholder="">
   		</div>
   		<!-- Ville -->
   		<div class="form-group">
@@ -223,7 +218,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <!-- Bouton -->
       <div>
-        <input class="btn btn-transparent" type="submit" value="S'inscrire" name="forminscription">
+        <input class="btn btn-transparent" type="submit" value="S'inscrire">
       </div>
   	</form>
   </div>

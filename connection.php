@@ -36,12 +36,13 @@ function CreerAnnonce($connexion, $categorie, $type_annonce, $image1=NULL, $imag
 	
 	$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description, departement,ville) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description', '$departement','$ville')";
     $reponseInsert = $connexion->query($requeteInsert);
+    header("location:confirmation_annonce.php");
 }
 
 // Créer une entrée
 function CreerProfil($connexion, $nom, $prenom, $photo_profil, $ville, $departement, $telephone, $mail, $mot_de_passe){
 	
-	$requeteInsert = "INSERT INTO annonces(nom, prenom, photo_profil, ville, departement, telephone, mail, mot_de_passe) VALUES ('$nom', '$prenom', '$photo_profil', '$ville', '$departement', '$telephone', '$mail', '$mot_de_passe')";
+	$requeteInsert = "INSERT INTO utilisateurs(nom, prenom, photo_profil, ville, departement, telephone, mail, mot_de_passe) VALUES ('$nom', '$prenom', '$photo_profil', '$ville', '$departement', '$telephone', '$mail', '$mot_de_passe')";
     $reponseInsert = $connexion->query($requeteInsert);
 }
 
@@ -49,9 +50,10 @@ function RechercheAccueil($connexion, $titre, $departement)
 {
 	$requeteWhere = "SELECT * 
 					FROM `annonces` 
-					WHERE `titre` LIKE '%'$titre'%' 
+					WHERE `titre` LIKE '%$titre%' 
 					AND `departement` LIKE '%$departement%'";
 	$reponseWhere = $connexion->query($requeteWhere);
+	//header("location:annonces.php");
 }
 
 // Récupération des Id de chaque entrée :

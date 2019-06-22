@@ -67,9 +67,6 @@
 								<a class="nav-link login-button" href="index.php">S'inscrire</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">Se connecter</a>
-							</li>
-							<li class="nav-item">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
 							</li>
 						</ul>
