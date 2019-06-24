@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$departement = $_POST["departement"];
 	$ville = $_POST["ville"];
 
-	$creationAnnonce = Create($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
+	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
 }
 
 ?>
@@ -83,10 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">S'inscrire</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link login-button" href="index.php">Se connecter</a>
+								<a class="nav-link login-button" href="inscription.php">S'inscrire</a>
 							</li>
 							<li class="nav-item active">
 								<a class="nav-link add-button" href="depot_annonce.php"><i class="fa fa-plus-circle"></i> Déposer une annonce</a>
@@ -113,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="depot_annonce.php" method="POST">
+<form action="depot_annonce.php?" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
