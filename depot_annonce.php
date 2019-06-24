@@ -13,8 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$description = $_POST["description"];
 	$departement = $_POST["departement"];
 	$ville = $_POST["ville"];
+	$montant = $_POST["montant"];
 
-	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
+	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $montant, $departement, $ville);
 }
 
 ?>
@@ -183,6 +184,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<div>
 	<textarea name="description" rows="10" maxlength="3500" style="width: 100%;" required></textarea>
 	</div>
+</div>
+<div class="form-group">
+	<label for="montant">Montant *</label>
+	<input type="text" class="form-control" name="montant" style="width: 30%;" maxlength="7" required>
 </div>
 <div class="form-group">
 	<label for="departement">Departement *</label>

@@ -129,8 +129,9 @@
 			<img width="80px" height="auto" src="<?php echo $annonce['image1']; ?>" alt="image description"></td>
 		<td class="product-details">
 			<h3 class="title"><?php echo $annonce['titre']; ?></h3>
-			<span><strong>Posté le : </strong><time><?php echo $annonce['date']; ?></time> </span>
+			<span class="date"><strong>Posté le : </strong><time><?php echo $annonce['date']; ?></time> </span>
 			<span class="location"><strong>Location</strong><?php echo $annonce['departement'].', '.$annonce['ville']; ?></span>
+			<span class="montant"><strong>Montant</strong><?php echo $annonce['montant'].'€'; ?></span>
 		</td>
 		<td class="product-category"><span class="categories"><?php echo $annonce['categorie']; ?></span></td>
 		<td class="action" data-title="Action">
