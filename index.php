@@ -178,6 +178,9 @@
 			    	<li class="list-inline-item">
 			    		<a href=""><i class="fa fa-calendar"></i><?php echo $annonce['date']; ?></a>
 			    	</li>
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-money"></i><?php echo $annonce['montant']. '€'; ?></a>
+			    	</li>
 			    </ul>
 			    <p class="card-text"><?php echo $annonce['description']; ?></p>
 			    <div class="product-ratings">

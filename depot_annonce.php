@@ -13,8 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$description = $_POST["description"];
 	$departement = $_POST["departement"];
 	$ville = $_POST["ville"];
+	$montant = $_POST["montant"];
 
-	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
+	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $montant, $departement, $ville);
 }
 
 ?>
@@ -185,6 +186,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</div>
 </div>
 <div class="form-group">
+	<label for="montant">Montant *</label>
+	<input type="text" class="form-control" name="montant" style="width: 30%;" maxlength="7" required>
+</div>
+<div class="form-group">
 	<label for="departement">Departement *</label>
 	<input type="text" class="form-control" name="departement" style="width: 30%;" maxlength="7" required>
 </div>
@@ -196,22 +201,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce">
 </div>
 </form>
-</div>
-
-				
-
-
-<div>
-	<script type="text/javascript">
-		function confirmerSuppression (num_annonce, nom, prenom) {
-			if (confirm("Voulez-vous vraiment supprimer cette annonce ? [ Le/la " + type_annonce + ", au nom de " + nom + " " + prenom + " déposé(e) le " + date + "]?")){
-				document.querySelector("#inputDelete").value = "delete";
-				document.querySelector("#inputUserId").value = num_annonce;
-				document.querySelector("#submitBtn").click();
-				return false;
-			}
-		}
-	</script>
 </div>
 				</div>
 			</div>
