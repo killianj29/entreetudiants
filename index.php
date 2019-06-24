@@ -253,7 +253,7 @@
     <!-- Container End -->
     <!-- To Top -->
     <div class="top-to">
-      <a id="top" class="" href=""><i class="fa fa-angle-up"></i></a>
+      <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
     </div>
 </footer>
 
