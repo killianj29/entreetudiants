@@ -82,7 +82,8 @@
 	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: space-around">
+	justify-content: space-around;
+  margin-bottom: 774px;">
 	<a class="nav-link login-button" href="index.php" style="margin: 20px 20px 20px 20px;">Retourner à l'accueil</a>
 	<a class="nav-link login-button" href="profil.php" style="margin: 20px 20px 20px 20px;">Voir mes annonces</a>
 	<a class="nav-link login-button" href="depot_annonce.php" style="margin: 20px 20px 20px 20px;">Déposer une nouvelle annonce</a>

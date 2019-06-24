@@ -46,16 +46,6 @@ function CreerProfil($connexion, $nom, $prenom, $photo_profil, $ville, $departem
     $reponseInsert = $connexion->query($requeteInsert);
 }
 
-function RechercheAccueil($connexion, $titre, $departement)
-{
-	$requeteWhere = "SELECT * 
-					FROM `annonces` 
-					WHERE `titre` LIKE '%$titre%' 
-					AND `departement` LIKE '%$departement%'";
-	$reponseWhere = $connexion->query($requeteWhere);
-	//header("location:annonces.php");
-}
-
 // Récupération des Id de chaque entrée :
 if (isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] == "update") {
 	
