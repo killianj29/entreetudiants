@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Edit Personal Info -->
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
-<form action="confirmation_annonce.php" method="POST">
+<form action="depot_annonce.php" method="POST">
 <!-- First Name -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
@@ -199,22 +199,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce">
 </div>
 </form>
-</div>
-
-				
-
-
-<div>
-	<script type="text/javascript">
-		function confirmerSuppression (num_annonce, nom, prenom) {
-			if (confirm("Voulez-vous vraiment supprimer cette annonce ? [ Le/la " + type_annonce + ", au nom de " + nom + " " + prenom + " déposé(e) le " + date + "]?")){
-				document.querySelector("#inputDelete").value = "delete";
-				document.querySelector("#inputUserId").value = num_annonce;
-				document.querySelector("#submitBtn").click();
-				return false;
-			}
-		}
-	</script>
 </div>
 				</div>
 			</div>
