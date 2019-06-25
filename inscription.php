@@ -218,7 +218,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <!-- Bouton -->
       <div>
-        <input class="btn btn-transparent" type="submit" value="S'inscrire">
+        <input class="btn btn-transparent" style="margin-top: 10px;" type="submit" value="S'inscrire">
       </div>
   	</form>
   </div>
