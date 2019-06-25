@@ -6,13 +6,11 @@ function getDatabaseConnexion(){
 		// On se connecte à MySQL
 		$pdo = new PDO ('mysql:host=remotemysql.com;dbname=oub2gdN0kk;charset=utf8', 'oub2gdN0kk', 'UZdeO6k5tR');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			return $pdo;
-			
+			return $pdo;			
 	}
-
 	
 	catch (PDOException $e) {
-		// En cas d'ereur, on affiche un message et on arrête tout
+		// En cas d'erreur, on affiche un message et on arrête tout
 		print "Erreur !: " . $e->getMessage() . "<br/>";
 		die();
 	}
@@ -32,9 +30,9 @@ function getOffresMoment($connexion){
 }
 
 // Créer une entrée
-function CreerAnnonce($connexion, $categorie, $type_annonce, $image1=NULL, $image2=NULL, $image3=NULL, $titre, $description, $departement, $ville){
+function CreerAnnonce($connexion, $categorie, $type_annonce, $image1=NULL, $image2=NULL, $image3=NULL, $titre, $description,$montant, $departement, $ville){
 	
-	$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description, departement,ville) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description', '$departement','$ville')";
+	$requeteInsert = "INSERT INTO annonces(categorie, type_annonce, image1, image2, image3, titre, description,montant, departement,ville) VALUES ('$categorie', '$type_annonce', '$image1', '$image2', '$image3', '$titre', '$description','$montant','$departement','$ville')";
     $reponseInsert = $connexion->query($requeteInsert);
     header("location:confirmation_annonce.php");
 }
@@ -44,16 +42,6 @@ function CreerProfil($connexion, $nom, $prenom, $photo_profil, $ville, $departem
 	
 	$requeteInsert = "INSERT INTO utilisateurs(nom, prenom, photo_profil, ville, departement, telephone, mail, mot_de_passe) VALUES ('$nom', '$prenom', '$photo_profil', '$ville', '$departement', '$telephone', '$mail', '$mot_de_passe')";
     $reponseInsert = $connexion->query($requeteInsert);
-}
-
-function RechercheAccueil($connexion, $titre, $departement)
-{
-	$requeteWhere = "SELECT * 
-					FROM `annonces` 
-					WHERE `titre` LIKE '%$titre%' 
-					AND `departement` LIKE '%$departement%'";
-	$reponseWhere = $connexion->query($requeteWhere);
-	//header("location:annonces.php");
 }
 
 // Récupération des Id de chaque entrée :

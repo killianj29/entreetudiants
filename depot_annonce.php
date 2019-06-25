@@ -13,8 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$description = $_POST["description"];
 	$departement = $_POST["departement"];
 	$ville = $_POST["ville"];
+	$montant = $_POST["montant"];
 
-	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $departement, $ville);
+	$creationAnnonce = CreerAnnonce($connexion, $categorie, $type_annonce, NULL, NULL, NULL, $titre, $description, $montant, $departement, $ville);
 }
 
 ?>
@@ -111,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="widget personal-info">
 <h3 class="widget-header user">Déposer une annnonce</h3>
 <form action="depot_annonce.php?" method="POST">
-<!-- First Name -->
+<!--  -->
 <div class="form-group">
 	<label for="categorie">Selectionner une catégorie *</label>
 	<div>
@@ -149,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</select>
 	</div>
 </div>
-<!-- Last Name -->
+<!--  -->
 <div class="form-group">
 	<label for="type_annonce">Type d'annonce *</label>
 		<div>
@@ -173,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<label for="file3">Image n°3</label>
 	<input type="file" class="form-control-file d-inline" name="image3">
 </div>
-<!-- Comunity Name -->
+<!-- -->
 <div class="form-group">
 	<label for="titre_annonce">Titre de l'annonce *</label>
 	<input type="text" class="form-control" name="titre" required>
@@ -183,6 +184,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<div>
 	<textarea name="description" rows="10" maxlength="3500" style="width: 100%;" required></textarea>
 	</div>
+</div>
+<div class="form-group">
+	<label for="montant">Montant *</label>
+	<input type="text" class="form-control" name="montant" style="width: 30%;" maxlength="7" required>
 </div>
 <div class="form-group">
 	<label for="departement">Departement *</label>
@@ -196,22 +201,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<input class="btn btn-transparent" type="submit" value="Déposer mon annonce">
 </div>
 </form>
-</div>
-
-				
-
-
-<div>
-	<script type="text/javascript">
-		function confirmerSuppression (num_annonce, nom, prenom) {
-			if (confirm("Voulez-vous vraiment supprimer cette annonce ? [ Le/la " + type_annonce + ", au nom de " + nom + " " + prenom + " déposé(e) le " + date + "]?")){
-				document.querySelector("#inputDelete").value = "delete";
-				document.querySelector("#inputUserId").value = num_annonce;
-				document.querySelector("#submitBtn").click();
-				return false;
-			}
-		}
-	</script>
 </div>
 				</div>
 			</div>
@@ -235,46 +224,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <img src="images/logo-footer.png" alt="">
+          <h1 name="entreetudiants" class="text-white">EntreEtudiants</h1>
           <!-- description -->
-          <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="alt-color"></p>
         </div>
       </div>
-      <!-- Link list -->
-      <div class="col-lg-2 offset-lg-1 col-md-3">
+      <!-- Lien vers les pages -->
+      <div class="col-lg-2 offset-lg-7 col-md-3">
         <div class="block">
-          <h4>Site Pages</h4>
+          <h4>Parcourir les pages</h4>
           <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="#">Terms of Services</a></li>
+            <li><a href="annonces.php">Voir les annonces</a></li>
+            <li><a href="profil.php">Voir son profil</a></li>
+            <li><a href="depot_annonce.php">Déposer une annonce</a></li>
           </ul>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
-        <div class="block">
-          <h4>Admin Pages</h4>
-          <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="#">Terms of Services</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Promotion -->
-      <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <a href="">
-            <!-- Icon -->
-            <img src="images/footer/phone-icon.png" alt="mobile-icon">
-          </a>
-          <p>Get the Dealsy Mobile App and Save more</p>
         </div>
       </div>
     </div>
@@ -292,21 +255,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Copyright © 2016. All Rights Reserved</p>
           </div>
         </div>
-        <div class="col-sm-6 col-12">
-          <!-- Social Icons -->
-          <ul class="social-media-icons text-right">
-              <li><a class="fa fa-facebook" href=""></a></li>
-              <li><a class="fa fa-twitter" href=""></a></li>
-              <li><a class="fa fa-pinterest-p" href=""></a></li>
-              <li><a class="fa fa-vimeo" href=""></a></li>
-            </ul>
-        </div>
       </div>
     </div>
     <!-- Container End -->
     <!-- To Top -->
     <div class="top-to">
-      <a id="top" class="" href=""><i class="fa fa-angle-up"></i></a>
+      <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
     </div>
 </footer>
 

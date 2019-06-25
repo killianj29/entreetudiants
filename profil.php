@@ -129,9 +129,9 @@
 			<img width="80px" height="auto" src="<?php echo $annonce['image1']; ?>" alt="image description"></td>
 		<td class="product-details">
 			<h3 class="title"><?php echo $annonce['titre']; ?></h3>
-			<span class="add-id"><strong>Numéro d'annonce:</strong><?php echo $annonce['id']; ?></span>
-			<span><strong>Posté le : </strong><time><?php echo $annonce['date']; ?></time> </span>
-			<span class="location"><strong>Location</strong><?php echo $annonce['departement'].','.$annonce['ville']; ?></span>
+			<span class="date"><strong>Posté le : </strong><time><?php echo $annonce['date']; ?></time> </span>
+			<span class="location"><strong>Location</strong><?php echo $annonce['departement'].', '.$annonce['ville']; ?></span>
+			<span class="montant"><strong>Montant</strong><?php echo $annonce['montant'].'€'; ?></span>
 		</td>
 		<td class="product-category"><span class="categories"><?php echo $annonce['categorie']; ?></span></td>
 		<td class="action" data-title="Action">
@@ -218,7 +218,7 @@
     <!-- Container End -->
     <!-- To Top -->
     <div class="top-to">
-      <a id="top" class="" href=""><i class="fa fa-angle-up"></i></a>
+      <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
     </div>
 </footer>
 

@@ -82,8 +82,79 @@
 	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: space-around">
+	justify-content: space-around;
+  margin-bottom: 774px;">
 	<a class="nav-link login-button" href="index.php" style="margin: 20px 20px 20px 20px;">Retourner à l'accueil</a>
 	<a class="nav-link login-button" href="profil.php" style="margin: 20px 20px 20px 20px;">Voir mes annonces</a>
 	<a class="nav-link login-button" href="depot_annonce.php" style="margin: 20px 20px 20px 20px;">Déposer une nouvelle annonce</a>
 </div>
+
+<!--============================
+=            Footer            =
+=============================-->
+
+<footer class="footer section section-sm">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
+        <!-- About -->
+        <div class="block about">
+          <!-- footer logo -->
+          <h1 name="entreetudiants" class="text-white">EntreEtudiants</h1>
+          <!-- description -->
+          <p class="alt-color"></p>
+        </div>
+      </div>
+      <!-- Lien vers les pages -->
+      <div class="col-lg-2 offset-lg-7 col-md-3">
+        <div class="block">
+          <h4>Parcourir les pages</h4>
+          <ul>
+            <li><a href="annonces.php">Voir les annonces</a></li>
+            <li><a href="profil.php">Voir son profil</a></li>
+            <li><a href="depot_annonce.php">Déposer une annonce</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</footer>
+<!-- Footer Bottom -->
+<footer class="footer-bottom">
+    <!-- Container Start -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <!-- Copyright -->
+          <div class="copyright">
+            <p>Copyright © 2016. All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container End -->
+    <!-- To Top -->
+    <div class="top-to">
+      <a id="top" class="" href=""><i class="fa fa-angle-up"></i></a>
+    </div>
+</footer>
+
+  <!-- JAVASCRIPTS -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="plugins/tether/js/tether.min.js"></script>
+  <script src="plugins/raty/jquery.raty-fa.js"></script>
+  <script src="plugins/bootstrap/dist/js/popper.min.js"></script>
+  <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="plugins/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+  <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+  <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+  <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+</html>
